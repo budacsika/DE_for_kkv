@@ -131,7 +131,7 @@ a {
   align-items: start;
   align-content: start;
   min-height: auto;
-  padding: clamp(34px, 4vw, 58px) clamp(22px, 6vw, 84px) clamp(128px, 10vw, 176px);
+  padding: clamp(30px, 3.4vw, 48px) clamp(22px, 6vw, 84px) clamp(92px, 7vw, 128px);
 }
 
 .eyebrow {
@@ -153,15 +153,16 @@ p {
 h1 {
   max-width: 760px;
   margin-bottom: 24px;
-  font-size: clamp(2.5rem, 5vw, 3.20rem);
+  font-size: clamp(2.25rem, 4.2vw, 2.9rem);
   line-height: 1.02;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 h2 {
-  margin-bottom: 18px;
-  font-size: clamp(2rem, 4vw, 2.45rem);
-  line-height: 1.04;
+  margin-bottom: 14px;
+  font-size: clamp(1.75rem, 3.2vw, 2.15rem);
+  line-height: 1.08;
   letter-spacing: 0;
 }
 
@@ -465,13 +466,14 @@ h3 {
 .problem,
 .audience,
 .outcomes,
+.pricing,
 .trust {
-  padding: clamp(64px, 9vw, 118px) clamp(20px, 6vw, 90px);
+  padding: clamp(44px, 6vw, 76px) clamp(20px, 6vw, 90px);
 }
 
 .section-intro {
   max-width: 850px;
-  margin-bottom: 34px;
+  margin-bottom: 24px;
 }
 
 .section-intro h2,
@@ -745,7 +747,7 @@ h3 {
 }
 
 .timeline {
-  padding: clamp(56px, 8vw, 96px) clamp(22px, 6vw, 84px);
+  padding: clamp(44px, 6vw, 72px) clamp(22px, 6vw, 84px);
 }
 
 .timeline-grid {
@@ -762,11 +764,182 @@ h3 {
   background: linear-gradient(90deg, transparent, rgba(29, 95, 159, 0.34), transparent);
 }
 
+.process-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.process-grid article {
+  min-height: 250px;
+}
+
 .outcomes {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(28px, 6vw, 70px);
+  gap: clamp(22px, 4vw, 44px);
   align-items: start;
+}
+
+.pricing-grid,
+.maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.addon-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 28px);
+}
+
+.pricing-card,
+.maintenance-grid article {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 54px rgba(20, 32, 51, 0.08);
+}
+
+.pricing-card-featured {
+  border-color: rgba(29, 95, 159, 0.34);
+  background:
+    linear-gradient(180deg, rgba(29, 95, 159, 0.08), rgba(255, 255, 255, 0.92) 36%),
+    #ffffff;
+}
+
+.pricing-card::after,
+.maintenance-grid article::after {
+  content: "";
+  position: absolute;
+  right: -28px;
+  top: -28px;
+  width: 116px;
+  height: 116px;
+  border: 20px solid rgba(47, 127, 192, 0.1);
+  border-radius: 50%;
+}
+
+.package-step {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.price {
+  margin: 14px 0 4px;
+  color: var(--ink);
+  font-size: clamp(1.55rem, 2.5vw, 2.05rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.price-note {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.pricing-card ul,
+.maintenance-grid ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-card li,
+.maintenance-grid li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--muted);
+}
+
+.pricing-card li::before,
+.maintenance-grid li::before {
+  content: "";
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--blue);
+}
+
+.maintenance {
+  padding: clamp(44px, 6vw, 72px) clamp(22px, 6vw, 84px);
+}
+
+.addon-card {
+  min-height: 310px;
+  padding: clamp(24px, 3vw, 34px);
+  isolation: isolate;
+}
+
+.addon-card::before {
+  content: "";
+  position: absolute;
+  right: 30px;
+  bottom: 26px;
+  width: 124px;
+  height: 82px;
+  opacity: 0.5;
+  background:
+    radial-gradient(circle at 12% 72%, currentColor 0 6px, transparent 7px),
+    radial-gradient(circle at 48% 44%, currentColor 0 6px, transparent 7px),
+    radial-gradient(circle at 82% 20%, currentColor 0 6px, transparent 7px),
+    linear-gradient(135deg, transparent 45%, currentColor 45% 49%, transparent 49%);
+}
+
+.addon-card-consulting {
+  color: #1d5f9f;
+  border-color: rgba(29, 95, 159, 0.28);
+  background:
+    linear-gradient(135deg, rgba(29, 95, 159, 0.12), rgba(255, 255, 255, 0.9) 48%),
+    #ffffff;
+}
+
+.addon-card-source {
+  color: #7a5a15;
+  border-color: rgba(216, 166, 79, 0.38);
+  background:
+    linear-gradient(135deg, rgba(216, 166, 79, 0.16), rgba(255, 255, 255, 0.92) 48%),
+    #ffffff;
+}
+
+.addon-card h3,
+.addon-card .price,
+.addon-card li {
+  color: var(--ink);
+}
+
+.addon-card li {
+  color: var(--muted);
+}
+
+.addon-card-source li::before {
+  background: var(--amber);
+}
+
+.addon-kicker {
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: currentColor;
+  background: rgba(255, 255, 255, 0.74);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
 }
 
 .outcome-cards {
@@ -901,7 +1074,10 @@ h3 {
   }
 
   .problem-grid,
-  .timeline-grid {
+  .timeline-grid,
+  .pricing-grid,
+  .maintenance-grid,
+  .process-grid {
     grid-template-columns: 1fr;
   }
 
